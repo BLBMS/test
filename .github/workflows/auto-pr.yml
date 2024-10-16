@@ -1,0 +1,22 @@
+name: Auto Pull Request
+
+on:
+  push:
+    branches:
+      - master  # ali ime tvoje veje
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        title: 'Avtomatski pull request'
+        body: 'Ta pull request je bil ustvarjen avtomatsko.'
+        base: main  # ciljna veja
+        head: master  # veja s spremembami
